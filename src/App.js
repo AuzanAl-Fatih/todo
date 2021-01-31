@@ -21,8 +21,16 @@ function App() {
         break;
     }
   };
+  const saveLocalTodos = () => {
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify([]));
+    } else {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+  };
   useEffect(() => {
     filterHandler();
+    saveLocalTodos();
   }, [todos, status]);
   return (
     <div className="App">
